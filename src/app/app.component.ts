@@ -7,8 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  //title = 'app';
-  testForm: FormGroup; // <--- heroForm is of type FormGroup
+  testForm: FormGroup;
 
   constructor(private fb: FormBuilder) { // <--- inject FormBuilder
     this.createForm();
