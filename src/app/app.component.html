@@ -17,16 +17,16 @@
         {{ formErrors.value }}
       </div>
       <label class="center-block">Start Date:
-      <input type="date" class="form-control" formControlName="startDate">
+      <input type="date" class="form-control" formControlName="date_start">
     </label>
-    <div *ngIf="formErrors.value" class="alert alert-danger">
-        {{ formErrors.value }}
+      <div *ngIf="formErrors.date_start" class="alert alert-danger">
+        {{ formErrors.date_start }}
       </div>
       <label class="center-block">End Date:
-      <input type="date" class="form-control" formControlName="endDate">
+      <input type="date" class="form-control" formControlName="date_end" >
     </label>
-    <div *ngIf="formErrors.value" class="alert alert-danger">
-        {{ formErrors.value }}
+      <div *ngIf="formErrors.date_end" class="alert alert-danger">
+        {{ formErrors.date_end }}
       </div>
     </div>
     <button class="button btn btn-success" type="submit" [disabled]="testForm.invalid">Report</button>

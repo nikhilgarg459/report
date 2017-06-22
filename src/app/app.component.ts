@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DateValidation } from './date_validation';
 
 @Component({
   selector: 'app-root',
@@ -17,15 +18,17 @@ export class AppComponent {
     this.testForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15), Validators.pattern("[a-zA-Z ]*")]],
       value: ['', [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern("[0-9]+")]],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required]
-    });
+      date_start: ['', Validators.required],
+      date_end: ['', Validators.required]
+    }, {
+        validator: DateValidation.CheckDate // your validation method
+      });
 
 
     this.testForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
- 
-    this.onValueChanged(); 
+
+    this.onValueChanged();
   }
 
 
@@ -51,8 +54,8 @@ export class AppComponent {
   formErrors = {
     'name': '',
     'value': '',
-    'startDate':'',
-    'endDate':''
+    'date_start': '',
+    'date_end': ''
   };
 
   validationMessages = {
@@ -68,16 +71,15 @@ export class AppComponent {
       'max': 'Maximum acceptable value is 100.',
       'pattern': 'Only numerical values accepted.'
     },
-     'startDate': {
+    'date_start': {
       'required': 'Start Date is required.',
     },
-     'endDate': {
-      'required': 'End Date is required.'
+    'date_end': {
+      'required': 'End Date is required.',
+      'invalidDate':'End date should be greater than Start date.'
     },
-    
+
   };
-
-
 
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
     console.log(value, valid);
