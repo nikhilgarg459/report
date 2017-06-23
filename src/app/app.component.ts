@@ -8,9 +8,24 @@ import { DateValidation } from './date_validation';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  show: string;
+  rotateValue: string;
+  pieAuto: boolean;
+  pieClipped: boolean;
+
   testForm: FormGroup;
 
+  name: string;
+  value: number;
+  start_date: string;
+  end_date: string;
+  form_submitted: boolean;
+
   constructor(private fb: FormBuilder) { // <--- inject FormBuilder
+    this.form_submitted = false;
+    this.pieAuto = false;
+    this.pieClipped = false;
     this.createForm();
   }
 
@@ -76,13 +91,31 @@ export class AppComponent {
     },
     'date_end': {
       'required': 'End Date is required.',
-      'invalidDate':'End date should be greater than Start date.'
+      'invalidDate': 'End date should be greater than Start date.'
     },
 
   };
 
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
     console.log(value, valid);
+    this.name = this.testForm.get('name').value;
+    this.value = this.testForm.get('value').value;
+    this.start_date = this.testForm.get('date_start').value;
+    this.end_date = this.testForm.get('date_end').value;
+    this.form_submitted = true;
+    let percentage = (360 * this.value) / 100;
+    this.rotateValue = "rotate(" + percentage + "deg)";
+
+    if (this.value > 50) {
+      this.pieAuto = true;
+      this.pieClipped = false;
+      this.show = "block";
+    }
+    else {
+      this.pieAuto = false;
+      this.pieClipped = true;
+      this.show = "none";
+    }
   }
 
 }

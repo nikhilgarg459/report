@@ -1,4 +1,4 @@
-.ng-valid[required].ng-touched , .ng-valid.required.ng-touched , .ng-valid.ng-touched  {
+.ng-valid[required].ng-touched , .ng-valid:not(form).required.ng-touched , .ng-valid:not(form).ng-touched  {
   border-left: 5px solid #42A948; /* green */
 }
 
@@ -15,7 +15,7 @@
     vertical-align: middle;
     position: relative;
     top: 50px;
-    width:40%;
+    width:50%;
     border: 1px solid grey;
     padding: 10px;
 }
@@ -24,3 +24,87 @@
     position: relative;
     left: 43%;
 }
+
+
+
+.rel{
+    position: relative;
+}
+
+.pie-wrapper{
+    position: absolute;
+    top: 150%;
+    left: 42%;
+
+}
+
+.pie{
+    height: 100px;
+    position: absolute;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.pieAuto{
+    clip: rect(auto, auto, auto, auto);
+}
+
+.pieClipped{
+    clip: rect(auto, auto, auto, 50px);
+}
+
+.half-circle{
+    position : absolute;
+    height: 100px;
+    width: 100px;
+    border: 10px solid #3498db;;
+    clip: rect(auto, 50px, auto, auto);
+    border-radius: 50%;
+}
+
+
+
+
+.pie-wrapper .pie .right {
+  display: none;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+
+}
+
+.pie-wrapper .pie .left {
+  -webkit-transform: rotate(108deg);
+          transform: rotate(108deg);
+}
+
+.label{
+    position: absolute;
+    color: black;
+    height:80px;
+    width:80px;
+    background-color: white;
+    padding: 0px;
+    top:10px;
+    left:10px;
+    border-radius:50%;
+
+
+}
+
+
+.label-span{
+    position: relative;
+    top:35px;
+}
+
+
+.outer{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 10px solid aqua;
+     position: absolute;
+    top: 150%;
+    left: 42%;
+}
+

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!form_submitted">
   <h2 class="heading">Sample Form</h2>
   <h3 class="heading"><i>Please fill the values</i></h3>
   <hr>
@@ -33,5 +33,21 @@
   </form>
 </div>
 
-<!--<p>Form value: {{ testForm.value | json }}</p>
-<p>Form status: {{ testForm.status | json }}</p>-->
+<div class="rel" *ngIf="form_submitted">
+<div class="container" >
+  <h2 class="heading">Submitted values</h2>
+  <p class="heading"><b>Name:</b> {{name}}</p>
+  <p class="heading"><b>Start Date:</b> {{start_date}}</p>
+  <p class="heading"><b>End Date:</b> {{end_date}}</p>
+</div>
+<div class="outer">
+</div>
+  <div class="pie-wrapper" >
+    <div class="pie" [ngClass]="{'pieAuto': pieAuto, 'pieClipped': pieClipped}">
+      <div class="half-circle left" [style.transform]="rotateValue"></div>
+      <div class="half-circle right" [style.display]="show"></div>
+    </div>
+    <div class="label"><span class="label-span"> {{value}} % </span></div>
+  </div>
+  
+</div>
